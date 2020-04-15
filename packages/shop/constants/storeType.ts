@@ -8,6 +8,11 @@ import {
 } from './navigation';
 export default [
   {
+    link: BOOK_PAGE,
+    icon: '',
+    label: 'Book',
+  },
+  {
     link: GROCERY_PAGE,
     icon: '',
     label: 'Grocery',
@@ -26,11 +31,6 @@ export default [
     link: CLOTHING,
     icon: '',
     label: 'Clothing',
-  },
-  {
-    link: BOOK_PAGE,
-    icon: '',
-    label: 'Book',
   },
   {
     link: FURNITURE_PAGE,
