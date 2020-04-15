@@ -21,7 +21,7 @@ const LanguageProvider = ({ children, messages }) => {
       // toggleLanguage('en');
     } else {
       // toggleLanguage(navigator.language.split('-')[0]);
-      toggleLanguage('en');
+      toggleLanguage('es');
       // toggleLanguage(localLang);
     }
 

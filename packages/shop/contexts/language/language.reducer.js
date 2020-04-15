@@ -1,5 +1,5 @@
 export const initialState = {
-  lang: 'en',
+  lang: 'es',
 };
 export default function languageReducer(state, action) {
   switch (action.type) {
