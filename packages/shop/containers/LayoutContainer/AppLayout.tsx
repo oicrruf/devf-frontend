@@ -7,13 +7,7 @@ import styled from 'styled-components';
 import Header from './Header/Header';
 import { useStickyState } from 'contexts/app/app.provider';
 import {
-  HOME_PAGE,
-  GROCERY_PAGE,
-  CLOTHING,
-  MAKEUP_PAGE,
-  BAGS_PAGE,
-  FURNITURE_PAGE,
-  BOOK_PAGE,
+  HOME_PAGE
 } from 'constants/navigation';
 const MobileHeader = dynamic(() => import('./Header/MobileHeader'), {
   ssr: false,
@@ -49,13 +43,7 @@ const Layout: FunctionComponent<LayoutProps> = ({
   const { pathname } = useRouter();
 
   const isHomePage =
-    pathname === HOME_PAGE ||
-    pathname === GROCERY_PAGE ||
-    pathname === CLOTHING ||
-    pathname === MAKEUP_PAGE ||
-    pathname === BOOK_PAGE ||
-    pathname === FURNITURE_PAGE ||
-    pathname === BAGS_PAGE;
+    pathname === HOME_PAGE
   return (
     <LayoutWrapper className={`layoutWrapper ${className}`}>
       {(mobile || tablet) && (

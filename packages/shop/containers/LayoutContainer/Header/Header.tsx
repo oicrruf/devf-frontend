@@ -45,12 +45,6 @@ import Logoimage from 'image/logo.svg';
 import UserImage from 'image/user.jpg';
 import {
   HOME_PAGE,
-  GROCERY_PAGE,
-  CLOTHING,
-  MAKEUP_PAGE,
-  BAGS_PAGE,
-  FURNITURE_PAGE,
-  BOOK_PAGE,
   PROCEED_TO_CHECKOUT_PAGE,
   PROFILE_PAGE,
   ORDER_RECEIVED,
@@ -64,39 +58,6 @@ type HeaderProps = {
   token: string;
   pathname: string;
 };
-
-const MenuArray = [
-  {
-    link: GROCERY_PAGE,
-    icon: <FruitsVegetable />,
-    label: 'Grocery',
-  },
-  {
-    link: MAKEUP_PAGE,
-    label: 'Makeup',
-    icon: <FacialCare />,
-  },
-  {
-    link: BAGS_PAGE,
-    label: 'Bags',
-    icon: <Handbag />,
-  },
-  {
-    link: CLOTHING,
-    label: 'Clothing',
-    icon: <DressIcon />,
-  },
-  {
-    link: FURNITURE_PAGE,
-    label: 'Furniture',
-    icon: <FurnitureIcon width="15px" height="13px" />,
-  },
-  {
-    link: BOOK_PAGE,
-    label: 'Book',
-    icon: <BookIcon width="15px" height="13px" />,
-  },
-];
 
 const DropDownMenuArray = [
   {
@@ -141,8 +102,6 @@ const Header: React.FC<HeaderProps> = ({
     toggleLanguage,
   } = useContext<any>(LanguageContext);
 
-  const activeMenuItem = MenuArray.find(item => item.link === pathname);
-
   const selectedLangindex = LanguageArray.findIndex(x => x.id === lang);
 
   const {
@@ -150,13 +109,6 @@ const Header: React.FC<HeaderProps> = ({
     authDispatch,
   } = useContext<any>(AuthContext);
   const { state, dispatch } = useContext(SearchContext);
-  const [activeMenu, setActiveMenu] = useState(
-    activeMenuItem || {
-      link: GROCERY_PAGE,
-      icon: <FruitsVegetable />,
-      label: 'Grocery',
-    }
-  );
 
   const { text } = state;
   const handleSearch = (text: any) => {
@@ -183,7 +135,6 @@ const Header: React.FC<HeaderProps> = ({
     }
   };
   const resetSearch = (selectedMenu: any) => {
-    setActiveMenu(selectedMenu);
     dispatch({
       type: 'RESET',
     });
@@ -241,13 +192,7 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   const isHomePage =
-    pathname === HOME_PAGE ||
-    pathname === GROCERY_PAGE ||
-    pathname === CLOTHING ||
-    pathname === MAKEUP_PAGE ||
-    pathname === BOOK_PAGE ||
-    pathname === FURNITURE_PAGE ||
-    pathname === BAGS_PAGE;
+    pathname === HOME_PAGE
 
   return (
     <HeaderWrapper style={style} className={className}>
@@ -255,7 +200,7 @@ const Header: React.FC<HeaderProps> = ({
         <Logo
           onClick={() =>
             resetSearch({
-              link: GROCERY_PAGE,
+              link: HOME_PAGE,
               icon: <FruitsVegetable />,
               label: 'Grocery',
             })
@@ -268,21 +213,7 @@ const Header: React.FC<HeaderProps> = ({
           </Link>
         </Logo>
         <MainMenu>
-          <Popover
-            className="right"
-            handler={
-              <SelectedType>
-                <span>
-                  <TypeIcon>{activeMenu.icon}</TypeIcon>
-                  <span>{activeMenu.label}</span>
-                </span>
-                <DropDownArrow>
-                  <MenuDown />
-                </DropDownArrow>
-              </SelectedType>
-            }
-            content={<>{MenuArray.map(NavItem)}</>}
-          />
+          {/* Aquí estaba el menú de selección de tipo de página */}
         </MainMenu>
       </HeaderLeftSide>
       {isHomePage ? (
