@@ -106,7 +106,7 @@ const Search: React.FC<SearchBoxProps> = ({
         {pathname && pathname !== '/' ? (
           <CurrentType>{ucwords(pathname)}</CurrentType>
         ) : (
-          <CurrentType>Grocery</CurrentType>
+          <CurrentType>Book</CurrentType>
         )}
 
         <InputSearch
