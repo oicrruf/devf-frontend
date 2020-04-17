@@ -26,7 +26,6 @@ class Search extends Component {
 	}
 
 	submit = () => {
-		
 		let book = this.state.search;
 		const URL = `https://api-bookstores.herokuapp.com/api/v1/books/${book}`;
 		axios.get(URL)
@@ -54,7 +53,6 @@ class Search extends Component {
 		} else if (books.length === 0) {
 			return <span>{this.state.message}</span>
 		} else if (books.length > 0) {
-
 			return (
 				<React.Fragment>
 					<h5 className="my-3">{books.length} books found</h5>
@@ -100,10 +98,10 @@ class Search extends Component {
 							</InputGroupAddon>
 						</InputGroup>
 					</div>
-
+					
+					
 					{this.renderBooks()}
 				</div>
-
 			</React.Fragment>
 		);
 	}

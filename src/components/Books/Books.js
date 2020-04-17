@@ -9,6 +9,8 @@ import {
 	FaPlus, FaRegEye 
 } from 'react-icons/fa'
 import { FaBarcode, FaCalendar, FaFlag, FaTag } from 'react-icons/fa';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 class Books extends Component {
 	state = {
@@ -22,8 +24,21 @@ class Books extends Component {
 		edition: this.props.edition
 	}
 
+	menu() {
+		const Menu = withReactContent(Swal)
+
+		Menu.fire({
+			position: 'top-end',
+			showConfirmButton: false,
+			showCloseButton: true
+		}).then(() => {
+			return console.log('Works')
+		})
+	}
+
 	render() {
 		return (
+			<React.Fragment>
 			<div className="col-lg-4 mb-3">
 				<Card >
 					<div className="row">
@@ -49,13 +64,15 @@ class Books extends Component {
 							<Button className="btn btn-dark m-2 ml-1" size="sm">
 								<FaRegEye />
 							</Button>
-							<Button className="btn btn-success mr-0" size="sm">
+							<Button className="btn btn-success mr-0" size="sm" onClick={this.menu}>
 								<FaPlus />
 							</Button>
 						</div>
 					</div>
 				</Card>
 			</div>
+			
+			</React.Fragment>
 		);
 
 	}

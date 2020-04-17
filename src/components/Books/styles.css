@@ -25,3 +25,16 @@ ul li {
     -moz-box-shadow: 0px 1px 17px 5px rgba(245,245,245,1);
     box-shadow: 0px 1px 17px 5px rgba(245,245,245,1);
 }
+
+.swal2-container.swal2-top-end.swal2-backdrop-show {
+    padding: 0px; 
+}
+  
+.swal2-popup.swal2-modal.swal2-show {
+    height: 100vh !important;
+    border-radius: 0px; 
+}
+
+.swal2-checkbox {
+    display: none !important; 
+}
