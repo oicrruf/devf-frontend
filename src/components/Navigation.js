@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { 
 	Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavLink, NavItem, NavbarText 
 } from 'reactstrap';
-import { FaBook } from 'react-icons/fa'
+import { FaGhost } from 'react-icons/fa'
 
 const Navigation = (props) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -12,10 +12,10 @@ const Navigation = (props) => {
 
 	return (
 		<React.Fragment>
-			<Navbar color="light" light expand="md">
+			<Navbar color="dark" light expand="md">
 				<div className="container">
 					<NavbarBrand href="/">
-						<FaBook color="#575757"/>
+						<FaGhost color="#ffffff"/>
 					</NavbarBrand>
 					<NavbarToggler onClick={toggle} />
 					<Collapse isOpen={isOpen} navbar>
@@ -27,7 +27,7 @@ const Navigation = (props) => {
 							</NavItem>
 							<NavItem>
 								<NavLink>
-									<Link to="/create-book">Inventory</Link>
+									<Link to="/inventory">Inventory</Link>
 								</NavLink>
 							</NavItem>
 						</Nav>

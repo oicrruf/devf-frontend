@@ -8,3 +8,14 @@ body{
 .eng{
     content: 'bandera'   
 }
+
+.nav-link a {
+    font-family: 'Poppins', sans-serif !important;
+    color: #ffffff;
+}
+
+.nav-link a:hover {
+    font-family: 'Poppins', sans-serif !important;
+    color: #ffffff;
+    font-weight: 500;
+}

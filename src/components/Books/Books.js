@@ -5,10 +5,7 @@ import {
 } from 'reactstrap';
 import '../main.css';
 import './styles.css';
-import {
-	FaPlus, FaRegEye
-} from 'react-icons/fa'
-import { FaBarcode, FaCalendar, FaFlag, FaTag } from 'react-icons/fa';
+import { FaBarcode, FaCalendar, FaFlag, FaTag, FaPlus, FaRegEye } from 'react-icons/fa';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import axios from 'axios';
