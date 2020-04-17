@@ -9,6 +9,12 @@ import {
 	FaPlus, FaRegEye 
 } from 'react-icons/fa'
 import { FaBarcode, FaCalendar, FaFlag, FaTag } from 'react-icons/fa';
+import { english } from '../../assets/img/language/eng.svg';
+import { spanish } from '../../assets/img/language/spa.svg';
+import { french } from '../../assets/img/language/fre.svg';
+import { sweden } from '../../assets/img/language/swe.svg';
+import { italy } from '../../assets/img/language/ita.svg';
+import { russian } from '../../assets/img/language/rus.svg';
 
 class Books extends Component {
 	state = {
@@ -38,7 +44,7 @@ class Books extends Component {
 									<h6 className="mt-3">Details:</h6>
 									<ul>
 										<li><FaBarcode color="#575757" className="mr-2"/>{this.state.isbn}</li>
-										<li><FaFlag color="#575757" className="mr-2"/>{this.state.language == null ? 'unknown' : this.state.language}</li>
+										<li><FaFlag color="#575757" className="mr-2"/>{this.state.language != null ? this.state.language : 'unknown' }</li>
 										<li><FaCalendar color="#575757" className="mr-2"/>{this.state.edition}</li>
 										<li><Badge color="light"><FaTag className="mr-2"/>{this.state.categories == null ? 'unknown' : this.state.categories}</Badge></li>
 									</ul>
