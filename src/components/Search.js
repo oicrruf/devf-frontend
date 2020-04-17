@@ -14,22 +14,11 @@ class Search extends Component {
 		books: [],
 	};
 
-	inputSearch = (e) => {
-		switch (e.target.name) {
-			case 'search':
-				this.state.message = 'Writing...'
-				this.setState({ search: e.target.value })
-				break;
-			default:
-				break;
-		}
-	}
-
 	submit = () => {
 		let book = this.state.search;
 		const URL = `https://api-bookstores.herokuapp.com/api/v1/books/${book}`;
 		axios.get(URL)
-		.then(response => {
+			.then(response => {
 				this.state.title = book;
 				const books = response.data;
 				this.setState({ books });
@@ -39,10 +28,21 @@ class Search extends Component {
 
 	componentDidMount() {
 		this.state.message = 'Loading...'
-		if (this.state.search != ''){
+		if (this.state.search != '') {
 			this.submit()
 		} else {
 			console.log('Input is empty')
+		}
+	}
+
+	inputSearch = (e) => {
+		switch (e.target.name) {
+			case 'search':
+				this.state.message = 'Writing...'
+				this.setState({ search: e.target.value })
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -98,8 +98,6 @@ class Search extends Component {
 							</InputGroupAddon>
 						</InputGroup>
 					</div>
-					
-					
 					{this.renderBooks()}
 				</div>
 			</React.Fragment>

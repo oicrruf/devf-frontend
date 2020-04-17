@@ -38,3 +38,25 @@ ul li {
 .swal2-checkbox {
     display: none !important; 
 }
+
+.swal2-content img {
+    height: 150px !important;
+}
+
+.swal2-content {
+    text-align: left !important;
+}
+
+.swal2-content label, 
+.swal2-content input {
+    font-size: 1rem;
+    margin: 0px !important;
+}
+
+.swal2-content label {
+    font-weight: 400;
+} 
+
+.swal2-content input {
+    margin-bottom: 10px !important;
+}

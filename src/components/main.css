@@ -3,3 +3,8 @@
 body{
     font-family: 'Poppins', sans-serif !important;
 }
+
+/* Flags */
+.eng{
+    content: 'bandera'   
+}

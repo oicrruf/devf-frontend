@@ -22,7 +22,7 @@ const Navigation = (props) => {
 						<Nav className="mr-auto" navbar>
 							<NavItem>
 								<NavLink>
-									<Link to="/search">Search</Link>
+									<Link to="/">Search</Link>
 								</NavLink>
 							</NavItem>
 							<NavItem>

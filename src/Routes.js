@@ -5,7 +5,7 @@ import CrearArticulo from './components/CrearArticulo';
 
 export default [
   <React.Fragment key={"Routes"}>
-      <Route exact path="/search" component={ Search } ></Route>
+      <Route exact path="/" component={ Search } ></Route>
       <Route exact path="/create-book" component={ CrearArticulo} ></Route>
   </React.Fragment>
 ];
