@@ -11,6 +11,7 @@ import {
 import { FaBarcode, FaCalendar, FaFlag, FaTag } from 'react-icons/fa';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import axios from 'axios';
 
 class Books extends Component {
 	state = {
@@ -24,6 +25,30 @@ class Books extends Component {
 		edition: this.props.edition
 	}
 
+	toast(type, text) {
+		const Toast = Swal.mixin({
+			toast: true,
+			position: 'bottom-end',
+			showConfirmButton: false,
+			timer: 5000
+		})
+		Toast.fire({
+			icon: type,
+			title: text
+		})
+	}
+
+	handlerSubmit = (values) => {
+		const URL = 'https://api-bookstores.herokuapp.com/api/v1/books';
+		axios.post(URL, values)
+			.then(res => {
+				this.toast('success', 'Saved')
+			})
+			.catch(err => {
+				this.toast('error', 'Error')
+			})
+	};
+
 	async menu(prop) {
 		console.log(prop)
 		const Menu = withReactContent(Swal)
@@ -35,24 +60,32 @@ class Books extends Component {
 			html: `
 			<img src="${prop.image}">
 			<hr class="mb-5">
+			<input name="image" class="d-none" id="input-image" value="${prop.image}" class="swal2-input" type="text"> 
 			<label for="input-title">Title</label>
-			<input id="input-title" value="${prop.title}" class="swal2-input"> 
+			<input name="title" id="input-title" value="${prop.title}" class="swal2-input" type="text"> 
 			<label for="input-author">Author</label>
-			<input id="input-author" value="${prop.author['name']}" class="swal2-input"> 
+			<input name="author" id="input-author" value="${prop.author['name']}" class="swal2-input" type="text"> 
 			<label for="input-isbn">ISBN</label>
-			<input id="input-isbn" value="${prop.isbn}" class="swal2-input"> 
+			<input name="isbn" id="input-isbn" value="${prop.isbn}" class="swal2-input" type="text"> 
 			<label for="input-language">Language</label>
-			<input id="input-language" value="${prop.language}" class="swal2-input"> 
+			<input name="language" id="input-language" value="${prop.language}" class="swal2-input" type="text"> 
 			<label for="input-categories">Categories</label>
-			<input id="input-categories" value="${prop.categories}" class="swal2-input"> 
-			<label for="input-categories">Price</label>
-			<input id="input-price" class="swal2-input"> 
-			<label for="input-stock">Stock</label>
-			<input id="input-stock" class="swal2-input"> 
+			<input name="categories" id="input-categories" value="${prop.categories}" class="swal2-input" type="text"> 
+			<div class="row">
+				<div class="col">
+					<label for="input-categories">Price</label>
+					<input name="price" id="input-price" value="0" class="swal2-input" type="number"> 
+				</div>
+				<div class="col">
+					<label for="input-stock">Stock</label>
+					<input name="stock" id="input-stock" value="0" class="swal2-input" type="number"> 
+				</div>
+			</div>
 			`,
 			focusConfirm: false,
 			preConfirm: () => {
 				return [
+					document.getElementById('input-image').value,
 					document.getElementById('input-title').value,
 					document.getElementById('input-author').value,
 					document.getElementById('input-isbn').value,
@@ -64,7 +97,17 @@ class Books extends Component {
 			}
 		})
 		if (formValues) {
-			console.log(JSON.stringify(formValues))
+			let values = {
+				image: formValues[0],
+				title: formValues[1],
+				author: formValues[2],
+				isbn: formValues[3],
+				language: formValues[4],
+				categories: formValues[5],
+				price: formValues[6],
+				stock: formValues[7],
+			}
+			this.handlerSubmit(values)
 		}
 	}
 
