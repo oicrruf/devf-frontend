@@ -6,7 +6,7 @@ import {
 } from 'reactstrap';
 import { FaSearch } from 'react-icons/fa';
 
-class SearchBooks extends Component {
+class Search extends Component {
 	state = {
 		title: 'Which book do you want to consult?',
 		search: '',
@@ -40,7 +40,11 @@ class SearchBooks extends Component {
 
 	componentDidMount() {
 		this.state.message = 'Loading...'
-		this.submit()
+		if (this.state.search != ''){
+			this.submit()
+		} else {
+			console.log('Input is empty')
+		}
 	}
 
 	renderBooks() {
@@ -105,4 +109,4 @@ class SearchBooks extends Component {
 	}
 }
 
-export default SearchBooks;
+export default Search;
